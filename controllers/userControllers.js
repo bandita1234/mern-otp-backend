@@ -14,20 +14,22 @@ const tarnsporter = nodemailer.createTransport({
 
 
 exports.userregister = async (req, res) => {
-    const { fname, email, password } = req.body;
+    const { username, email, password } = req.body;
+    // console.log(req.body);
 
-    if (!fname || !email || !password) {
+    if (!username || !email || !password) {
         res.status(400).json({ error: "Please Enter All Input Data" })
     }
 
     try {
         const presuer = await users.findOne({ email: email });
+        // console.log(presuer);
 
         if (presuer) {
-            res.status(400).json({ error: "This User Allready exist in our db" })
+            res.status(400).json({ error: "This User Allready exist in our db"})
         } else {
             const userregister = new users({
-                fname, email, password
+                username, email, password
             });
 
             // here password hasing
