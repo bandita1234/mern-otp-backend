@@ -149,3 +149,6 @@ exports.userLogin = async(req,res)=>{
         res.status(400).json({ error: "Invalid Details", error })
     }
 }
+exports.abcd = async(req,res)=>{
+    res.status(200).json({message:"John wick"})
+}
